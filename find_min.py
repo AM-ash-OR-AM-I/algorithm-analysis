@@ -6,7 +6,7 @@ def find_min(a: list[int]) -> int:
     while mid < n - 1:
         mid = (lo + hi) // 2
         x = a[mid]
-        if mid == n-1 or (x < a[mid + 1] and x < a[mid - 1]):
+        if mid == n - 1 or (x < a[mid + 1] and x < a[mid - 1]):
             return x
         elif x < a[mid - 1] and x > a[mid + 1]:
             lo = mid + 1
