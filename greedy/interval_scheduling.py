@@ -1,4 +1,4 @@
-from typing import *
+from typing import List
 
 """Maximize the number of non-overlapping intervals."""
 
