@@ -10,12 +10,12 @@ package dp;
  * 10| 4
  */
 class Knapsack {
-  final int noOfObjects;
-  final int[] weights;
-  final int[] profits;
-  final int capacity;
-  int[][] profitMatrix;
-  int maxProfit = 0;
+  private int maxLength = 4;
+  private final int noOfObjects;
+  private final int[] weights;
+  private final int[] profits;
+  private final int capacity;
+  private int[][] profitMatrix;
 
   Knapsack(int capacity, int[] weights, int[] profits) {
     this.weights = weights;
@@ -23,6 +23,13 @@ class Knapsack {
     this.noOfObjects = weights.length;
     this.capacity = capacity;
     profitMatrix = new int[noOfObjects + 1][capacity + 1];
+  }
+
+  /**
+   * @param length - length of the integer to be used to print matrix
+   */
+  void setLength(int length) {
+    this.maxLength = length;
   }
 
   /**
@@ -48,24 +55,28 @@ class Knapsack {
     }
   }
 
-  void maximizeProfit() {
+  int maximumProfit() {
     for (int n = 1; n <= noOfObjects; n++) {
       for (int c = 1; c <= capacity; c++) {
         optimal(n, c);
       }
     }
-    maxProfit = profitMatrix[noOfObjects][capacity];
+    return profitMatrix[noOfObjects][capacity];
+  }
+
+  void printBorder() {
+    System.out.println("=".repeat((capacity + 1) * maxLength));
   }
 
   void displayMatrix() {
-    System.out.println("=".repeat((capacity + 1) * 8));
+    printBorder();
     for (int[] row : profitMatrix) {
       for (int x : row) {
-        System.out.printf("%-8s", x);
+        System.out.printf("%-" + maxLength + "s", x);
       }
       System.out.println();
     }
-    System.out.println("=".repeat((capacity + 1) * 8));
+    printBorder();
   }
 
 }
@@ -75,11 +86,12 @@ public class Knapsack01 {
   public static void main(String[] args) {
     int capacity = 10;
     int[] weights = { 1, 2, 3, 4 };
-    int[] profits = { 5, 6, 53425, 324 };
-    Knapsack knaspsack = new Knapsack(capacity, weights, profits);
-    knaspsack.maximizeProfit();
-    knaspsack.displayMatrix();
-    System.out.printf("%nMaxProfit = %d", knaspsack.maxProfit);
+    int[] profits = { 5, 6, 432, 324 };
+    Knapsack knapsack = new Knapsack(capacity, weights, profits);
+    knapsack.setLength(6);
+    int maxProfit = knapsack.maximumProfit();
+    knapsack.displayMatrix();
+    System.out.printf("%nMaxProfit = %d", maxProfit);
 
   }
 }
