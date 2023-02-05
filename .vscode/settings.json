@@ -3,4 +3,5 @@
     "src"
   ],
   "java.project.outputPath": "bin",
+  "python.analysis.typeCheckingMode": "basic",
 }

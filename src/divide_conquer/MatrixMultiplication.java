@@ -1,3 +1,4 @@
+package divide_conquer;
 public class MatrixMultiplication {
   static void simpleMatrixMultiply(int[][] a, int[][] b) {
     int[][] newMatrix = new int[a.length][b[0].length];

@@ -40,6 +40,9 @@ class WeightedIntervalScheduling:
             )
 
     def find_interval_included(self):
+        """
+        Finds all the interval that are included in the final solution
+        """
         includes = []
         pointer = self.n - 1
         prev = current = self.optimal_sol[pointer]
