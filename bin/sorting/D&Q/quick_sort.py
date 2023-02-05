@@ -2,9 +2,6 @@ import random
 from typing import List
 
 
-iteration = 0
-
-
 def quick_sort(arr: List[int], begin, end):
     def swap(i, j):
         arr[i], arr[j] = arr[j], arr[i]
@@ -22,8 +19,7 @@ def quick_sort(arr: List[int], begin, end):
     """
 
     def partition() -> int:
-        global iteration
-        iteration += 1
+        # Choosing the middle element as pivot
         mid = (begin + end) // 2
         swap(mid, end)
         pivot = arr[end]
@@ -44,4 +40,3 @@ def quick_sort(arr: List[int], begin, end):
 a = [43, 32, 4, 453, 423, 6547, 234, 76]
 quick_sort(a, 0, len(a) - 1)
 print(a)
-print(f"{iteration = }")
