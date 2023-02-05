@@ -64,19 +64,33 @@ class Knapsack {
     return profitMatrix[noOfObjects][capacity];
   }
 
-  void printBorder() {
+  void displayBorder() {
     System.out.println("=".repeat((capacity + 1) * maxLength));
   }
 
+  String center(String s, int n) {
+    int spaceSize = n - s.length();
+    int prefixSize = spaceSize / 2;
+    int suffixSize = (spaceSize + 1) / 2;
+    return n > s.length()
+        ? " ".repeat(prefixSize) + s + " ".repeat(suffixSize)
+        : s;
+  }
+
+  void displayHeading() {
+    System.out.printf(center("[MATRIX]", (capacity + 1) * maxLength));
+  }
+
   void displayMatrix() {
-    printBorder();
+    displayHeading();
+    displayBorder();
     for (int[] row : profitMatrix) {
       for (int x : row) {
         System.out.printf("%-" + maxLength + "s", x);
       }
       System.out.println();
     }
-    printBorder();
+    displayBorder();
   }
 
 }
