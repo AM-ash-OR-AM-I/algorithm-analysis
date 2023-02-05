@@ -1,14 +1,5 @@
 package dp;
 
-/**
- * w | p
- * -----
- * 2 | 5
- * 4 | 12
- * 1 | 3
- * 9 | 5
- * 10| 4
- */
 class Knapsack {
   private int maxLength = 4;
   private final int noOfObjects;
@@ -17,6 +8,16 @@ class Knapsack {
   private final int capacity;
   private int[][] profitMatrix;
 
+  /**
+   * <h2>0/1 Knapsack:</h2>
+   * It adds items to bag/knapsack only if their weight is not greater
+   * than the available capacity
+   * {@code T(N) = O(n*c)}
+   * 
+   * @param capacity - Capacity of the knapsack
+   * @param weights  - Weight of each item
+   * @param profit   - Profit of each item
+   */
   Knapsack(int capacity, int[] weights, int[] profits) {
     this.weights = weights;
     this.profits = profits;
@@ -63,6 +64,8 @@ class Knapsack {
     }
     return profitMatrix[noOfObjects][capacity];
   }
+
+  // ___________Code to Display Result below 👇🏻____________________
 
   void displayBorder() {
     System.out.println("=".repeat((capacity + 1) * maxLength));
