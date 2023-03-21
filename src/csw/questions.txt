@@ -1,0 +1,5 @@
+1. WAP to find sum of all elements
+2. search array for element x
+3. binary search in a sorted array
+4. Rotate elements of an array k no. of times
+5. Array of positive and negative integers, find a contiguous subarray whose sum is maximum.
