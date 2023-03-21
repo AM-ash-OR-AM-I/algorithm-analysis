@@ -1,3 +1,4 @@
+// Q5. Array of positive and negative integers, find a contiguous subarray whose sum is maximum.
 import java.util.*;
 class MaxSubArray {
 
