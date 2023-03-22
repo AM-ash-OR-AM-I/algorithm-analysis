@@ -1,9 +1,7 @@
 // Q5. Array of positive and negative integers, find a contiguous subarray whose sum is maximum.
-import java.util.*;
 class MaxSubArray {
 
-    static int maxSubArray(int[] arr, int n){
-        int maxVaint n = arr.length;
+    static int maxSubArray(int[] arr){
         int maxValue = -1;
         int negativeMax = Integer.MIN_VALUE;
         int currentValue = 0;
@@ -23,7 +21,7 @@ class MaxSubArray {
     }
     public static void main(String[] args){
         int[] arr = {-1, -2, 3, 4, -4, 6, -4, 3, 2};
-        int max = maxSubArray(arr, arr.length);
+        int max = maxSubArray(arr);
         System.out.println("Max value = "+ max);
     }
 }
