@@ -1,5 +1,8 @@
 // Q6: Arrange elements of an array, such that odd indexed elements are lesser than its neighbour even indexed elements.
-class OddEven{
+
+import utils.PrintArray;
+
+class WaveForm{
     static void swap(int[] arr, int i, int j){
         int temp = arr[i];
         arr[i] = arr[j];
@@ -21,21 +24,10 @@ class OddEven{
                 }
             }
         }
-    }
-    static void display(int[] arr){
-        String s = "";
-        for (int i=0; i<arr.length; i++){
-            if (i == (arr.length-1)){
-                s += arr[i];
-            } else {
-                s+= arr[i]+", ";
-            }
-        }
-        System.out.println("Odd Even Array: " + s);
-    }
+    } 
     public static void main(String[] args){
         int[] arr = {2, 3, 4, 54, 75, 3244342, 433};
         oddEven(arr);
-        display(arr);
+        PrintArray.display(arr, "WaveForm Odd- even: ");
     }
 }

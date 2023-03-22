@@ -29,7 +29,7 @@ public class RotateArray{
         for (int x: arr){
             s+= x+", ";
         }
-        System.out.println("No. of iterarions: " + iterations);
+        System.out.println("No. of iterations: " + iterations);
         System.out.println("Rotated Array: " + s);
     }
     public static void main(String[] args){

@@ -1,6 +1,0 @@
-1. Find sum of all elements
-2. search array for element x
-3. binary search in a sorted array
-4. Rotate elements of an array k no. of times
-5. Array of positive and negative integers, find a contiguous subarray whose sum is maximum.
-6. Arrange elements of an array, such that odd indexed elements are lesser than its neighbour even indexed elements.
