@@ -1,4 +1,6 @@
 import java.util.*;
+import utils.PrintArray;
+
 public class RotateArray{
     static int iterations = 0;
     static void rotateArray(int[] arr, int k){
@@ -24,21 +26,13 @@ public class RotateArray{
 
     }
 
-    static void display(int[] arr){
-        String s = "";
-        for (int x: arr){
-            s+= x+", ";
-        }
-        System.out.println("No. of iterations: " + iterations);
-        System.out.println("Rotated Array: " + s);
-    }
     public static void main(String[] args){
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter no. of rotations: ");
         int k = sc.nextInt();
         rotateArray(arr, k);
-        display(arr);
+        PrintArray.display(arr, "Array after rotation: ");
         
         /**
         Time complexity = O(N)

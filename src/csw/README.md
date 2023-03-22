@@ -10,3 +10,9 @@ its place. Arrange values of array so that value i is stored at arr[i]
 8. Given an array of length n, it contains unique elements from 1-n and sort the elements.
 9. Given an unsorted array, find smallest positive number missing in the
 array.
+10. Given a sorted Array, arrange it maximum, minimum form.
+11. Given an array you need to find maximum sum of arr[i]*(i+1)
+for all elements such that you are allowed to rotate the array.
+12. Given an array arr[], find maximum distance of index j and i, such
+that arr[j] > arr[i]
+13. 
