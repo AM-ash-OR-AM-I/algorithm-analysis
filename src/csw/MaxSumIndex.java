@@ -3,6 +3,8 @@
 for all elements such that you are allowed to rotate the array.
  */
 public class MaxSumIndex {
+    
+    // TODO: optimise it
     static int maxSum(int[] arr){
         /*
          * T(n) = O(n^2) can be made better upto O(n)
