@@ -1,3 +1,4 @@
+package arrays;
 import java.util.*;
 class BinarySeach {
     static int binarySearch(int[] arr, int low, int high, int x){

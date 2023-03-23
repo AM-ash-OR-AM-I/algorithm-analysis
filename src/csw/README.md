@@ -1,4 +1,6 @@
 # Questions
+
+## Arrays
 1. Find sum of all elements
 2. search array for element x
 3. Rotate elements of an array k no. of times

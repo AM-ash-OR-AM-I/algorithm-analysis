@@ -1,3 +1,4 @@
+package arrays;
 // Q5. Array of positive and negative integers, find a contiguous subarray whose sum is maximum.
 class MaxSubArray {
 

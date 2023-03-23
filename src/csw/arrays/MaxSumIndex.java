@@ -1,3 +1,4 @@
+package arrays;
 /*
  * 11. Given an array you need to find maximum sum of arr[i]*(i+1)
 for all elements such that you are allowed to rotate the array.

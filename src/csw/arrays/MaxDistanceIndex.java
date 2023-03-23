@@ -1,3 +1,4 @@
+package arrays;
 /*
  * 12. MaxDistance
  * Given an array arr[], find maximum distance of index j and i, such
