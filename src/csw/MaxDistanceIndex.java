@@ -2,9 +2,9 @@
  * 12. MaxDistance
  * Given an array arr[], find maximum distance of index j and i, such
  * that arr[j] > arr[i] (assuming j>i)
+ * [20, 18, 16, 14, 10, 15]
  */
 public class MaxDistanceIndex {
-
     // TODO: optimise it
     static int findMaxDist(int[] arr){
         int n = arr.length;
@@ -13,7 +13,7 @@ public class MaxDistanceIndex {
                 if(arr[j+(i-1)]> arr[j]){
                     return i-1;
                 }
-            }
+            } 
         }
         return -1;
     }
