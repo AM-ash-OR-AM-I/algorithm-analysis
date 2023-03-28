@@ -1,6 +1,6 @@
 package utils;
-public class PrintArray {
-    static public void display(int[] arr, String msg){
+public class Util {
+    static public<T> void display(T[] arr, String msg){
         String s = "";
         for (int i=0; i<arr.length; i++){
             if (i == (arr.length-1)){
@@ -10,5 +10,11 @@ public class PrintArray {
             }
         }
         System.out.println(msg + s);
+    }
+
+    static public<T> void swap(T[] arr, int i, int j){
+        T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }

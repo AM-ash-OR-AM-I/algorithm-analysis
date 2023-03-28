@@ -1,4 +1,5 @@
-import utils.PrintArray;
+package arrays;
+import utils.Util;
 
 /*
  * 8. Given an array of length n, it contains unique elements from 1-n and sort the elements.
@@ -13,6 +14,6 @@ class SortPermutation{
     public static void main(String[] args) {
         int[] arr = {2, 1, 3, 5, 4, 6};
         sortArray(arr);
-        PrintArray.display(arr, "Sorted Array = ");
+        Util.display(arr, "Sorted Array = ");
     }
 }

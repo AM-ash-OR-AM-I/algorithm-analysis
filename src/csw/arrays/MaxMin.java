@@ -1,5 +1,5 @@
 package arrays;
-import utils.PrintArray;
+import utils.Util;
 
 /*
  * 10. Given a sorted Array, arrange it maximum, minimum form.
@@ -18,6 +18,6 @@ public class MaxMin {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6};
         int[] newArr = maxMin(arr);
-        PrintArray.display(newArr, "Array = ");
+        Util.display(newArr, "Array = ");
     }
 }

@@ -1,5 +1,6 @@
+package arrays;
 import java.util.*;
-import utils.PrintArray;
+import utils.Util;
 
 public class RotateArray{
     static int iterations = 0;
@@ -32,7 +33,7 @@ public class RotateArray{
         System.out.print("Enter no. of rotations: ");
         int k = sc.nextInt();
         rotateArray(arr, k);
-        PrintArray.display(arr, "Array after rotation: ");
+        Util.display(arr, "Array after rotation: ");
         
         /**
         Time complexity = O(N)

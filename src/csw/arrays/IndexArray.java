@@ -1,5 +1,5 @@
 package arrays;
-import utils.PrintArray;
+import utils.Util;
 
 /* 
  * Given array of size N, containing elements from 0 to N-1. All values
@@ -7,11 +7,6 @@ import utils.PrintArray;
  * its place. Arrange values of array so that value i is stored at arr[i]
  */
 public class IndexArray {
-    static void swap(int[] arr, int i, int j){
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
 
     /*
      * Same time complexity but uses a extra Array. 
@@ -36,7 +31,7 @@ public class IndexArray {
     static void replaceArray(int[] arr){
         for (int i=0; i< arr.length; i++){
             while (arr[i]!=-1 && arr[i]!=i){
-                swap(arr, i, arr[i]);
+                Util.swap(arr, i, arr[i]);
             }
         }
     }
@@ -44,6 +39,6 @@ public class IndexArray {
         int[] arr = {4, 3, 6, 1, 5, -1, -1, 7, 8};
         // int[] newArr = newArray(arr);
         replaceArray(arr);
-        PrintArray.display(arr, "IndexArry = ");
+        Util.display(arr, "IndexArry = ");
     }
 }
