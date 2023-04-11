@@ -20,16 +20,17 @@ def quick_sort(arr: List[int], begin, end):
 
     def partition() -> int:
         # Choosing the middle element as pivot
-        mid = (begin + end) // 2
-        swap(mid, end)
+        # mid = (begin + end) // 2
+        # swap(mid, end)
         pivot = arr[end]
         i = begin - 1
         for j in range(begin, end):
             if arr[j] < pivot:
                 i += 1
                 swap(i, j)
-        swap(i + 1, end)
-        return i + 1
+        i += 1
+        swap(i, end)
+        return i
 
     if begin < end:
         index = partition()

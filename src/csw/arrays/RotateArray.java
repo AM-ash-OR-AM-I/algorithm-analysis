@@ -10,21 +10,14 @@ public class RotateArray{
         k = k%n;
         int rest = arr.length - k;
         for (int i = 0; i<k; i++){
-            iterations +=1;
             rightSubArray[i] = arr[i];
         }
-
         for (int i=0; i < rest; i++){
-            iterations +=1;
             arr[i] = arr[i+k];
         }
-
         for (int i = 0; i<k; i++){
-            iterations +=1;
             arr[rest + i] = rightSubArray[i];
         }
-        
-
     }
 
     public static void main(String[] args){
