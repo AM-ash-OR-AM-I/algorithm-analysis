@@ -1,14 +1,22 @@
 package sorting;
 
-public class QuickSort {
-    static int pivot(int arr, int begin, int end) {
-        // int pivot = arr[end];
+import utils.Util;
 
-        return 1;
+public class QuickSort {
+    static int find_pivot_index(int[] arr, int begin, int end) {
+        int pivot = arr[end];
+        int i = begin - 1;
+        for (int j = begin; j < end; j++) {
+            if (arr[j] < pivot) {
+                Util.swap(arr, ++i, j);
+            }
+        }
+        Util.swap(arr, ++i, pivot);
+        return i;
     }
 
     static void quickSort(int[] arr, int begin, int end) {
-        int pivot = pivot(end, begin, end);
+        int pivot = find_pivot_index(arr, begin, end);
         quickSort(arr, pivot + 1, end);
         quickSort(arr, begin, pivot - 1);
     }
@@ -20,5 +28,6 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] arr = { 4234, 23453, 45 };
         sort(arr);
+        Util.display(arr, "Array after soting: ");
     }
 }
