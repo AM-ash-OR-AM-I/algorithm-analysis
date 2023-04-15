@@ -15,7 +15,7 @@ class WaveForm{
             } else {
                 if ((arr[i-1] < arr[i]) && (arr[i-1] < arr[i+1])){
                     Util.swap(arr, i-1, i);
-                } else if ((arr[i+1] < arr[i]) && (arr[i+1] < arr[i+1])) {
+                } else if ((arr[i+1] < arr[i]) && (arr[i+1] < arr[i-1])) {
                     Util.swap(arr, i+1, i);
                 }
             }
