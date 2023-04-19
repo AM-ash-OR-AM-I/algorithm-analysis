@@ -15,24 +15,30 @@ public class SumPairEqualRest {
         for (int x : arr) {
             totalSum += x;
         }
-        
+
         // If both sum of pair and rest of them is same then sum is half.
-        int half = totalSum / 2; 
+        int half = totalSum / 2;
 
         // Take 2 pointers low and high
         int low = 0;
         int high = size - 1;
 
-        int currVal;
+        int currentSum;
         while (low < high) {
-            currVal = arr[low] + arr[high]; // Sum of a pair
-            if (currVal < half)
+            currentSum = arr[low] + arr[high]; // Sum of a pair
+
+            // If currentSum is less than sum/2, low++, currentSum of pair increases.
+            if (currentSum < half)
                 low++;
-            else if (currVal > half) 
+
+            // If currentSum is greater than sum/2, high++, currentSum of pair decreases.
+            else if (currentSum > half)
                 high--;
+
+            // currentSum = sum of rest of them
             else {
-                // sum of pair = sum of rest of them
-                System.out.println("Pair is: " + currVal);
+
+                System.out.println("Pair is: " + currentSum);
                 return true;
             }
         }
