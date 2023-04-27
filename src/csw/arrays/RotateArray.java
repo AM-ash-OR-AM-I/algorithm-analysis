@@ -14,8 +14,7 @@ public class RotateArray{
         }
         for (int i=0; i < rest; i++){
             arr[i] = arr[i+k];
-        }
-        for (int i = 0; i<k; i++){
+        }        for (int i = 0; i<k; i++){
             arr[rest + i] = rightSubArray[i];
         }
     }
