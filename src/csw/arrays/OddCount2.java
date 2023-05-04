@@ -27,7 +27,7 @@ public class OddCount2 {
             else
                 second ^= arr[i];
         }
-        System.out.println(first + second);
+        System.out.println(first + " " + second);
     }
 
     public static void main(String[] args) {

@@ -26,7 +26,7 @@ public class IndexArray {
     }
     
     /*
-     * Zero overhead, runs <=n times. Most efficient though asymptotically bot are O(N)
+     * Zero overhead, runs <=n times. Most efficient though asymptotically both are O(N)
      */
     static void replaceArray(int[] arr){
         for (int i=0; i< arr.length; i++){
