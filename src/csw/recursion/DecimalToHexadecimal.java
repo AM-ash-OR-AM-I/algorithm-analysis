@@ -1,23 +1,29 @@
 package recursion;
 
 public class DecimalToHexadecimal {
-    static String[] arr = {"A", "B", "C", "D", "E", "F"}; 
-    static String returnHexValueString(int rem){
-        if (rem>=10){
-            return arr[rem-10];
+    static String[] arr = { "A", "B", "C", "D", "E", "F" };
+
+    static String returnHexValueString(int rem) {
+        if (rem >= 10) {
+            return arr[rem - 10];
         }
         return String.valueOf(rem);
     }
-    static String decimalToHex(int decimal, String hex){
-        if (decimal==0){
+
+    static String decimalToHex(int decimal, String hex) {
+        if (decimal == 0) {
             return hex;
         }
-        return decimalToHex(decimal/16, returnHexValueString(decimal%16) + hex); 
+        return decimalToHex(decimal / 16, returnHexValueString(decimal % 16) + hex);
     }
-    static String decimalToHex(int x){
+
+    static String decimalToHex(int x) {
         return decimalToHex(x, "");
     }
+
     public static void main(String[] args) {
-        System.out.println("Hexadecimal = " + decimalToHex(31));
+        int decimal = 31;
+        System.out.println("hex = " + Integer.toHexString(decimal));
+        System.out.println("Hexadecimal = " + decimalToHex(decimal));
     }
 }
