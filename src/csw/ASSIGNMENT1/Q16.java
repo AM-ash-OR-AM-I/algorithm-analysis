@@ -1,8 +1,8 @@
-package recursion;
+package ASSIGNMENT1;
 
 import utils.Util;
 
-public class Permutation {
+public class Q16 {
     static int iterations = 0;
 
     static void permute(String[] arr, int i, int length) {

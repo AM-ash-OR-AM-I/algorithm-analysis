@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Util {
@@ -17,27 +18,11 @@ public class Util {
     }
 
     static public <T> void display(T[] arr, String msg) {
-        String s = "";
-        for (int i = 0; i < arr.length; i++) {
-            if (i == (arr.length - 1)) {
-                s += arr[i];
-            } else {
-                s += arr[i] + ", ";
-            }
-        }
-        System.out.println(msg + s);
+        System.out.printf("%s %s%n", msg, Arrays.toString(arr));
     }
 
     static public void display(int[] arr, String msg) {
-        String s = "";
-        for (int i = 0; i < arr.length; i++) {
-            if (i == (arr.length - 1)) {
-                s += arr[i];
-            } else {
-                s += arr[i] + ", ";
-            }
-        }
-        System.out.println(msg + s);
+        System.out.printf("%s %s%n", msg, Arrays.toString(arr));
     }
 
     static public <T> void swap(T[] arr, int i, int j) {
