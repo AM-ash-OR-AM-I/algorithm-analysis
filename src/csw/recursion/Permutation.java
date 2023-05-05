@@ -10,8 +10,7 @@ public class Permutation {
             Util.display(arr, "Array = ");
             return;
         }
-        int j = i;
-        for (j = i; j < length; j++) {
+        for (int j = i; j < length; j++) {
             Util.swap(arr, i, j);
             permute(arr, i + 1, length);
             Util.swap(arr, i, j);
