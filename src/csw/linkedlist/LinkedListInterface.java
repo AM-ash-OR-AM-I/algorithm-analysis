@@ -7,6 +7,6 @@ public interface LinkedListInterface<T> {
     void deleteBeg();
     void deleteEnd();
     void deleteAny(int index);
-    void sort();
     void display(String message);
+    void sort();
 }
