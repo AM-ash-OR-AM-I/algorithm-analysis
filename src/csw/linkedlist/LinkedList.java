@@ -334,4 +334,16 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<
         display("Linked list after removing duplicates: ");
     }
 
+    public boolean elementFound(T data) {
+        Node currNode = start;
+        while (currNode != null) {
+            if (currNode.data.equals(data)) {
+                return true;
+            }
+            currNode = currNode.next;
+        }
+        return false;
+
+    }
+
 }

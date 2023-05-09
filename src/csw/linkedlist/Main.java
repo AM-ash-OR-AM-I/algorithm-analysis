@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         LinkedList<Integer> linkedList = new LinkedList<>();
@@ -8,7 +10,13 @@ public class Main {
             linkedList.insertSorted(integer);
             linkedList.display("Linked list sorted order: ");
         }
-        linkedList.display("Linked list Before Sorting: ");
+        // linkedList.display("Linked list Before Sorting: ");
+        Scanner sc = new Scanner(System.in);
+        int searchElement = sc.nextInt();
+        if (linkedList.elementFound(searchElement))
+            System.out.println("Element found!");
+        else
+            System.out.println("Not found");
         // linkedList.sort();
         // linkedList.insertAny(1, 466);
         // linkedList.display("Linked List After sorting: ");
