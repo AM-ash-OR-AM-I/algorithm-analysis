@@ -99,6 +99,59 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<
             insertBeg(data);
     }
 
+    public void insertBefore(T data, T toSearch) {
+        // Insert before given Element
+        Node newNode = new Node(data);
+        Node current1 = start, current2 = start;
+        while (current2.data != toSearch && current2.next != null) {
+            current1 = current2;
+            current2 = current2.next;
+        }
+        newNode.next = current1.next;
+        current1.next = newNode;
+    }
+
+    /**
+     * Inserts after given Element
+     * 
+     * @param data     data of new Node
+     * @param toSearch data of node after which element needs to be inserted
+     */
+    public void insertAfter(T data, T toSearch) {
+        Node newNode = new Node(data);
+        Node current = start;
+        while (current.data != toSearch && current.next != null) {
+            current = current.next;
+        }
+        newNode.next = current.next; // New node now links with the next node.
+        current.next = newNode; // Previous node now links with new node
+    }
+
+    /**
+     * Inserts element in sorted order during each insertion, T(n) = O(N)
+     * 
+     * @param value
+     */
+    public void insertSorted(T value) {
+        Node newNode = new Node(value);
+        Node currNode = start;
+
+        if (currNode == null || value.compareTo(currNode.data) < 0) {
+            newNode.next = start;
+            start = newNode;
+            return;
+        }
+
+        while (currNode.next != null && currNode.next.data.compareTo(value) < 0) {
+            // If nextNode value is less than given value then return the node after which
+            // it'll be inserted
+            currNode = currNode.next;
+        }
+        newNode.next = currNode.next;
+        currNode.next = newNode;
+
+    }
+
     @Override
     public void deleteBeg() {
         if (start != null)
@@ -134,34 +187,6 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<
             Node current = travelTo(index); // Returns the node previous to the Given index
             current.next = current.next.next;
         }
-    }
-
-    public void insertBefore(T data, T toSearch) {
-        // Insert before given Element
-        Node newNode = new Node(data);
-        Node current1 = start, current2 = start;
-        while (current2.data != toSearch && current2.next != null) {
-            current1 = current2;
-            current2 = current2.next;
-        }
-        newNode.next = current1.next;
-        current1.next = newNode;
-    }
-
-    /**
-     * Inserts after given Element
-     * 
-     * @param data     data of new Node
-     * @param toSearch data of node after which element needs to be inserted
-     */
-    public void insertAfter(T data, T toSearch) {
-        Node newNode = new Node(data);
-        Node current = start;
-        while (current.data != toSearch && current.next != null) {
-            current = current.next;
-        }
-        newNode.next = current.next; // New node now links with the next node.
-        current.next = newNode; // Previous node now links with new node
     }
 
     /**
@@ -245,6 +270,8 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<
 
     /**
      * Sorts LinkedList by swapping data.
+     * 
+     * T(n) = O(n)
      */
     public void sort() {
         int n = length();
