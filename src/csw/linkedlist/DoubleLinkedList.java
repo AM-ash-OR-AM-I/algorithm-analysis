@@ -1,17 +1,19 @@
 package linkedlist;
-public class DoubleLinkedList <T> implements LinkedListInterface<T>{
-    class Node{
+
+public class DoubleLinkedList<T> implements LinkedListInterface<T> {
+    class Node {
         Node next;
         Node prev;
         T data;
-        Node(T data){
+
+        Node(T data) {
             this.data = data;
         }
     }
 
     Node start, end;
 
-    public int length(){
+    public int length() {
         Node current = start;
         int count = 0;
         while (current != null) {
@@ -20,13 +22,13 @@ public class DoubleLinkedList <T> implements LinkedListInterface<T>{
         }
         return count;
     }
+
     @Override
     public void insertBeg(T data) {
         Node newNode = new Node(data);
-        if (start==null){
+        if (start == null) {
             start = end = newNode;
-        }
-        else {
+        } else {
             newNode.next = start;
             start.prev = newNode;
             start = newNode;
@@ -34,22 +36,21 @@ public class DoubleLinkedList <T> implements LinkedListInterface<T>{
     }
 
     @Override
-    public void insertEnd(T data){
+    public void insertEnd(T data) {
         Node newNode = new Node(data);
-        if (start==null){
+        if (start == null) {
             start = end = newNode;
-        }
-        else{
+        } else {
             newNode.prev = end;
             end.next = newNode;
             end = newNode;
         }
     }
 
-    Node travelAny(int index){
+    Node travelAny(int index) {
         Node current = start;
         int count = 0;
-        while (++count<index){
+        while (++count < index) {
             current = current.next;
         }
         return current;
@@ -59,16 +60,13 @@ public class DoubleLinkedList <T> implements LinkedListInterface<T>{
     public void insertAny(int index, T data) {
         int MAX = length();
         Node node = new Node(data);
-        if (index>MAX || index<0){
-            System.out.println("Can't insert at "+index);
-        }
-        else if (index==MAX){
+        if (index > MAX || index < 0) {
+            System.out.println("Can't insert at " + index);
+        } else if (index == MAX) {
             insertEnd(data);
-        }
-        else if (index==0){
+        } else if (index == 0) {
             insertBeg(data);
-        }
-        else{
+        } else {
             Node prevIndex = travelAny(index);
             Node currentIndex = prevIndex.next;
             prevIndex.next = node;
@@ -94,16 +92,13 @@ public class DoubleLinkedList <T> implements LinkedListInterface<T>{
     @Override
     public void deleteAny(int index) {
         int MAX = length();
-        if (index>MAX || index<0){
-            System.out.println("Can't insert at "+index);
-        }
-        else if (index==MAX){
+        if (index > MAX || index < 0) {
+            System.out.println("Can't insert at " + index);
+        } else if (index == MAX) {
             deleteEnd();
-        }
-        else if (index==0){
+        } else if (index == 0) {
             deleteBeg();
-        }
-        else{
+        } else {
             Node prevIndex = travelAny(index);
             Node nextIndex = prevIndex.next.next;
             prevIndex.next = nextIndex;
@@ -117,7 +112,7 @@ public class DoubleLinkedList <T> implements LinkedListInterface<T>{
 
     }
 
-    public void display(){
+    public void display() {
         display("");
     }
 
@@ -141,11 +136,17 @@ public class DoubleLinkedList <T> implements LinkedListInterface<T>{
         }
         System.out.print(current.data + "\n");
     }
+
+    @Override
+    public void searchElement(T data) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'searchElement'");
+    }
 }
 
-class MainProgram{
+class MainProgram {
     public static void main(String[] args) {
-        DoubleLinkedList <Integer> dll = new DoubleLinkedList<>();
+        DoubleLinkedList<Integer> dll = new DoubleLinkedList<>();
         dll.insertEnd(234);
         dll.insertBeg(4324);
         dll.insertEnd(433);

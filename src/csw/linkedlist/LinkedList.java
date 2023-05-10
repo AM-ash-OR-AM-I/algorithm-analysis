@@ -2,6 +2,15 @@ package linkedlist;
 
 import java.util.HashSet;
 
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
 public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<T> {
     class Node {
         T data;
@@ -301,6 +310,17 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<
         start = q;
     }
 
+    public void reverse2() {
+        Node p = null, q = start, r = null;
+        while (q != null) {
+            r = q.next;
+            q.next = p;
+            p = q;
+            r = p;
+        }
+        start = q;
+    }
+
     public void display(String message) {
         System.out.println(message);
 
@@ -334,7 +354,8 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<
         display("Linked list after removing duplicates: ");
     }
 
-    public boolean elementFound(T data) {
+    @Override
+    public boolean searchElement(T data) {
         Node currNode = start;
         while (currNode != null) {
             if (currNode.data.equals(data)) {
@@ -346,4 +367,44 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<
 
     }
 
+    public LinkedList<T> copyLinkedListReverse() {
+        LinkedList<T> newLinkedList = new LinkedList<>();
+        Node currNode = start;
+        Node tempNode = null;
+        while (currNode != null) {
+            Node newNode = new Node(currNode.data);
+            currNode = currNode.next;
+            newNode.next = tempNode;
+            tempNode = newNode;
+        }
+        newLinkedList.start = tempNode;
+        return newLinkedList;
+    }
+
+    public boolean compareLinkedLists(LinkedList<T> ll) {
+        return compareLinkedLists(start, ll.start);
+    }
+
+    public boolean compareLinkedLists(Node node1, Node node2) {
+        if (node1 == null || node2 == null) {
+            return true;
+        }
+        if (node1 == null || node2 == null || (node1.data != node2.data)) {
+            return false;
+        }
+        return compareLinkedLists(node1.next, node2.next);
+    }
+
+    public boolean containsLoop() {
+        Node fastPointer = start;
+        Node slowPointer = start;
+        while (fastPointer != null) {
+            if (fastPointer == slowPointer) {
+                return true;
+            }
+            fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
+        }
+        return false;
+    }
 }
