@@ -108,6 +108,12 @@ public class CircularLinkedList<T> implements LinkedListInterface<T>{
         }
         return count;
     }
+
+    @Override
+    public boolean searchElement(T data) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'searchElement'");
+    }
 }
 
 class MainCLL {

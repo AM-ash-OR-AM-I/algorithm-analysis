@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class DoubleLinkedList<T> implements LinkedListInterface<T> {
+public class DoubleLinkedList<T extends Comparable<T>> implements LinkedListInterface<T> {
     class Node {
         Node next;
         Node prev;
@@ -79,14 +79,18 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T> {
 
     @Override
     public void deleteBeg() {
-        start = start.next;
-        display();
+        if (start != null) {
+            start = start.next;
+            start.prev = null;
+        }
     }
 
     @Override
     public void deleteEnd() {
-        end = end.prev;
-        display();
+        if (end != null) {
+            end = end.prev;
+            end.next = null;
+        }
     }
 
     @Override
@@ -105,6 +109,32 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T> {
             nextIndex.prev = prevIndex;
         }
         display();
+    }
+
+    /**
+     * 
+     * @param element Any element in LinkedList to be deleted
+     * @return true if found else false
+     */
+    public boolean deleteAnyElement(T element) {
+        Node currNode = start;
+        if (start.data.equals(element)) {
+            deleteBeg();
+            return true;
+        }
+        if (end.data.equals(element)) {
+            deleteEnd();
+            return true;
+        }
+        while (currNode != null) {
+            if (currNode.data.equals(element)) {
+                currNode.prev.next = currNode.next;
+                currNode.next.prev = currNode.prev;
+                return true;
+            }
+            currNode = currNode.next;
+        }
+        return false;
     }
 
     @Override
@@ -137,8 +167,30 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T> {
         System.out.print(current.data + "\n");
     }
 
+    public void addElementsSortedOrder(T value) {
+        Node currNode = start;
+        Node newNode = new Node(value);
+        if (currNode == null || value.compareTo(currNode.data) < 0) {
+            insertBeg(value);
+            return;
+        }
+        while (currNode.next != null && currNode.next.data.compareTo(value) < 0) {
+            currNode = currNode.next;
+        }
+        // Node nextNode = currNode.next;
+        if (currNode.next == null) {
+            insertEnd(value);
+            return;
+        }
+        // currNode.next = nextNode;
+        newNode.prev = currNode;
+        newNode.next = currNode.next;
+        currNode.next.prev = newNode;
+        currNode.next = newNode;
+    }
+
     @Override
-    public void searchElement(T data) {
+    public boolean searchElement(T data) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'searchElement'");
     }
@@ -147,13 +199,27 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T> {
 class MainProgram {
     public static void main(String[] args) {
         DoubleLinkedList<Integer> dll = new DoubleLinkedList<>();
-        dll.insertEnd(234);
-        dll.insertBeg(4324);
-        dll.insertEnd(433);
-        dll.insertAny(1, 1);
-        dll.deleteAny(2);
-        dll.deleteBeg();
-        dll.deleteEnd();
+        dll.addElementsSortedOrder(234);
+        dll.addElementsSortedOrder(4324);
+        dll.addElementsSortedOrder(433);
+        dll.addElementsSortedOrder(5435);
+        dll.addElementsSortedOrder(554);
+        dll.addElementsSortedOrder(1383);
+        dll.addElementsSortedOrder(4);
+        dll.display("LinkedList sorted order: ");
+        dll.deleteAnyElement(4324);
+        dll.display("After deleting elemnt: ");
+        dll.deleteAnyElement(234);
+        dll.display("After deleting elemnt: ");
+        dll.deleteAnyElement(4);
+        dll.display("After deleting elemnt: ");
+        dll.deleteAnyElement(5435);
+        dll.display("After deleting elemnt: ");
+        // dll.insertAny(1, 1);
+        // dll.deleteAny(2);
+        // dll.deleteBeg();
+        // dll.deleteEnd();
 
     }
+
 }
