@@ -10,7 +10,7 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
         }
     }
 
-    Node start, end, secondLast;
+    Node start, end;
 
     @Override
     public void insertBeg(T data) {
@@ -23,15 +23,7 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
             end.next = node;
             node.next = start;
             start = node;
-
-            // if (temp != end) {
-            if (secondLast == null) {
-                secondLast = start;
-            }
-            System.out.println("2ndlast = " + secondLast.data);
-
         }
-        display("");
     }
 
     @Override
@@ -42,20 +34,15 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
             start = node;
             end = node;
         } else {
-            Node temp = end;
             end.next = node;
             node.next = start;
             end = node;
-            // if (temp!=start)
-            secondLast = temp;
-            System.out.println("2ndlast = " + secondLast.data);
         }
-        display("");
     }
 
     Node travelTo(int index) {
         Node current = end.next;
-        int count = 0;
+        int count = 1;
         while (++count < index) {
             current = current.next;
         }
@@ -91,10 +78,10 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
     }
 
     public int count() {
-        if (end == null)
+        if (start == null)
             return 0;
 
-        Node temp = end;
+        Node temp = start;
         int count = 1;
         while (temp.next != end) {
             temp = temp.next;
@@ -121,11 +108,17 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 
     @Override
     public void deleteEnd() {
-        if (secondLast == null) {
-            start = null;
-        } else {
-            secondLast.next = start;
+        int pos = count() - 1;
+        System.out.println(pos);
+        if (pos == 0) {
+            // TODO: fix for 1 node
+            start = end = null;
+            return;
         }
+        Node secondLast = travelTo(pos);
+        secondLast.next = start;
+        end = secondLast;
+
     }
 
     @Override
@@ -147,12 +140,13 @@ class MainCLL {
         cll.insertBeg(56754);
         cll.insertBeg(432);
         cll.insertBeg(543);
-        // cll.insertBeg(45);
-        cll.insertEnd(5435);
-        cll.insertEnd(566);
-        // cll.display("");
+        // cll.insertEnd(5435);
+        // cll.insertEnd(566);
+        cll.display("");
         cll.deleteBeg();
-        cll.display("Delete beg: ");
+        cll.display("Delete Beg: ");
+        cll.deleteEnd();
+        cll.display("Delete end: ");
         cll.deleteEnd();
         cll.display("Delete end: ");
     }

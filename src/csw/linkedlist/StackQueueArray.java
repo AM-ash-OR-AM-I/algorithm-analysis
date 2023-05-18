@@ -4,13 +4,13 @@ class Stack extends BaseStack {
     int top = -1;
     int[] stack;
 
-    Stack(int max_length) {
-        super(max_length);
-        stack = new int[max_length];
+    Stack(int capacity) {
+        super(capacity);
+        stack = new int[capacity];
     }
 
     public void push(int data) {
-        if (top < (MAX_LENGTH - 1))
+        if (top < (capacity - 1))
             stack[++top] = data;
         else
             System.out.println("StackOverflow: Max length of stack exceeded.");
@@ -34,8 +34,10 @@ class Stack extends BaseStack {
 
     @Override
     void peek() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'peek'");
+        if (top == -1)
+            System.out.println("Underflow, stack is empty");
+        else
+            System.out.println("Top -> " + stack[top]);
     }
 }
 

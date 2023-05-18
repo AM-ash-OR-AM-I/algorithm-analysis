@@ -1,72 +1,81 @@
 package linkedlist;
+
 import java.util.Scanner;
 
-class StackLList extends BaseStack{
+class StackLList extends BaseStack {
     int length;
-    StackLList(int length){
+
+    StackLList(int length) {
         super(length);
     }
+
     @Override
     public void push(int data) {
-        if (length < MAX_LENGTH){
+        if (length < capacity) {
             length++;
             insertBeg(data);
-        }
-        else {
+        } else {
             System.out.println("\nOverflow: Stack is already full.");
         }
     }
+
     @Override
     public void pop() {
-        if (start!=null){
-            System.out.println("\nElement removed = "+start.data);
+        if (start != null) {
+            System.out.println("\nElement removed = " + start.data);
             start = start.next;
-        }
-        else {
+        } else {
             System.out.println("Underflow: Stack is Empty");
         }
     }
+
     @Override
-    public void displayStack(){
+    public void displayStack() {
         Node current = start;
         System.out.println("\n::STACK::");
-        while (current!=null){
-            if (current==start)
-                System.out.printf("| %-5s | --> TOP%n",current.data);
+        while (current != null) {
+            if (current == start)
+                System.out.printf("| %-5s | --> TOP%n", current.data);
             else
-                System.out.printf("| %-5s |%n",current.data);
+                System.out.printf("| %-5s |%n", current.data);
             current = current.next;
         }
     }
+
     @Override
     void peek() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'peek'");
+        if (start != null) {
+            System.out.println("\nTOP -> " + start.data);
+        } else {
+            System.out.println("Underflow: Stack is Empty");
+        }
     }
 }
 
-class QueueLList extends BaseQueue{
+class QueueLList extends BaseQueue {
     int length;
-    QueueLList(int length){
+
+    QueueLList(int length) {
         super(length);
     }
+
     @Override
     public void enqueue(int data) {
-        if (length < MAX_LENGTH){
+        if (length < MAX_LENGTH) {
             length++;
             insertEnd(data);
-        }
-        else System.out.println("Queue is full can't add.");
+        } else
+            System.out.println("Queue is full can't add.");
     }
 
     @Override
     public void dequeue() {
-        if (start!=null){
+        if (start != null) {
             length--;
-            System.out.println("\nElement removed = "+start.data);
+            System.out.println("\nElement removed = " + start.data);
             start = start.next;
-        }
-        else System.out.println("Queue is already empty.");
+        } else
+            System.out.println("Queue is already empty.");
     }
 
     @Override
@@ -74,12 +83,12 @@ class QueueLList extends BaseQueue{
         Node current = start;
         System.out.println("\n::QUEUE::");
         String msg;
-        while (current!=null){
-            if (start==end)
+        while (current != null) {
+            if (start == end)
                 System.out.printf("| %-5s | -> FRONT & REAR %n", current.data);
-            else if (current==start)
+            else if (current == start)
                 System.out.printf("| %-5s | -> FRONT%n", current.data);
-            else if (current.next==null)
+            else if (current.next == null)
                 System.out.printf("| %-5s | -> REAR%n", current.data);
             else
                 System.out.printf("| %-5s |%n", current.data);
@@ -91,7 +100,8 @@ class QueueLList extends BaseQueue{
 public class StackQueueLinkedList {
     public static void main(String[] args) {
         StackLList stack = new StackLList(3);
-//        QueueInterface queue = new QueueLList(3); // Gives access to only methods of queue.
-//        queue.menu();
+        // QueueInterface queue = new QueueLList(3); // Gives access to only methods of
+        // queue.
+        stack.menu();
     }
 }

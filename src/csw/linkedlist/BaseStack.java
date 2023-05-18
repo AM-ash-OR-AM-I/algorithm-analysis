@@ -3,18 +3,19 @@ package linkedlist;
 import java.util.Scanner;
 
 abstract class BaseStack extends LinkedList<Integer> {
-    int MAX_LENGTH;
+    int capacity;
     String MENU = """
             ** STACK MENU **
             1. PUSH
             2. POP
-            3. DISPLAY
+            3. PEEK
+            4. DISPLAY
             Any other number to show menu.
             """;
     Scanner sc = new Scanner(System.in);
 
     BaseStack(int length) {
-        MAX_LENGTH = length;
+        capacity = length;
     }
 
     abstract void push(int data);
@@ -36,7 +37,8 @@ abstract class BaseStack extends LinkedList<Integer> {
                     push(elem);
                 }
                 case 2 -> pop();
-                case 3 -> displayStack();
+                case 3 -> peek();
+                case 4 -> displayStack();
                 default -> System.out.println(MENU);
 
             }
