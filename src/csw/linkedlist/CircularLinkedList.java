@@ -1,43 +1,58 @@
 package linkedlist;
 
-public class CircularLinkedList<T> implements LinkedListInterface<T>{
-    class Node{
+public class CircularLinkedList<T> implements LinkedListInterface<T> {
+    class Node {
         Node next;
         T data;
-        Node(T data){
+
+        Node(T data) {
             this.data = data;
         }
     }
 
-    Node end;
+    Node start, end, secondLast;
 
     @Override
     public void insertBeg(T data) {
         Node node = new Node(data);
-        if (end==null){
+        if (start == null) {
+            node.next = node;
+            start = node;
             end = node;
-            end.next = end;
-        }
-        else{
-            node.next = end.next;
+        } else {
             end.next = node;
+            node.next = start;
+            start = node;
+
+            // if (temp != end) {
+            if (secondLast == null) {
+                secondLast = start;
+            }
+            System.out.println("2ndlast = " + secondLast.data);
+
         }
+        display("");
     }
 
     @Override
     public void insertEnd(T data) {
         Node node = new Node(data);
         if (end == null) {
+            node.next = node;
+            start = node;
             end = node;
-            end.next = end;
         } else {
-            node.next = end.next;
+            Node temp = end;
             end.next = node;
+            node.next = start;
             end = node;
+            // if (temp!=start)
+            secondLast = temp;
+            System.out.println("2ndlast = " + secondLast.data);
         }
-
+        display("");
     }
-    
+
     Node travelTo(int index) {
         Node current = end.next;
         int count = 0;
@@ -50,13 +65,11 @@ public class CircularLinkedList<T> implements LinkedListInterface<T>{
     @Override
     public void insertAny(int index, T data) {
         Node node = new Node(data);
-        if (index==0){
+        if (index == 0) {
             insertBeg(data);
-        }
-        else if (index==count()){
+        } else if (index == count()) {
             insertEnd(data);
-        }
-        else{
+        } else {
             Node current = travelTo(index);
             node.next = current.next;
             current.next = node;
@@ -64,45 +77,26 @@ public class CircularLinkedList<T> implements LinkedListInterface<T>{
     }
 
     @Override
-    public void deleteBeg() {
-
-    }
-
-    @Override
-    public void deleteEnd() {
-
-    }
-
-    @Override
-    public void deleteAny(int index) {
-
-    }
-
-    @Override
-    public void sort() {
-
-    }
-
-    @Override
     public void display(String message) {
-        Node temp = end.next; // start value
+        System.out.println(message);
+        Node temp = start; // start value
         int count = 1;
-        while(temp!=end){
+        while (temp.next != start) {
             count++;
-            System.out.printf("-> %-5s ",temp.data);
+            System.out.printf("-> %-5s ", temp.data);
             temp = temp.next;
         }
-        System.out.printf("-> %-5s ->\n",temp.data);
-        System.out.printf("<%s<%n","-".repeat(count*9));
+        System.out.printf("-> %-5s ->\n", temp.data);
+        System.out.printf("<%s<%n", "-".repeat(count * 9));
     }
 
     public int count() {
-        if (end==null)
+        if (end == null)
             return 0;
 
         Node temp = end;
         int count = 1;
-        while (temp.next!=end){
+        while (temp.next != end) {
             temp = temp.next;
             count++;
         }
@@ -114,15 +108,52 @@ public class CircularLinkedList<T> implements LinkedListInterface<T>{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'searchElement'");
     }
+
+    @Override
+    public void deleteBeg() {
+        if (start != null) {
+            start = start.next;
+            end.next = start;
+        } else if (start.next == null) {
+            start = null;
+        }
+    }
+
+    @Override
+    public void deleteEnd() {
+        if (secondLast == null) {
+            start = null;
+        } else {
+            secondLast.next = start;
+        }
+    }
+
+    @Override
+    public void deleteAny(int index) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteAny'");
+    }
+
+    @Override
+    public void sort() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'sort'");
+    }
 }
 
 class MainCLL {
     public static void main(String[] args) {
         CircularLinkedList<Integer> cll = new CircularLinkedList<>();
-        cll.insertEnd(3424);
-        cll.insertEnd(234);
         cll.insertBeg(56754);
-        cll.insertAny(1, 12);
-        cll.display("");
+        cll.insertBeg(432);
+        cll.insertBeg(543);
+        // cll.insertBeg(45);
+        cll.insertEnd(5435);
+        cll.insertEnd(566);
+        // cll.display("");
+        cll.deleteBeg();
+        cll.display("Delete beg: ");
+        cll.deleteEnd();
+        cll.display("Delete end: ");
     }
 }

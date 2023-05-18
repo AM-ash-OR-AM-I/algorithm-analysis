@@ -38,6 +38,11 @@ class StackLList extends BaseStack{
             current = current.next;
         }
     }
+    @Override
+    void peek() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'peek'");
+    }
 }
 
 class QueueLList extends BaseQueue{
