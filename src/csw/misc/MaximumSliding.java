@@ -1,5 +1,6 @@
 package misc;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -31,14 +32,23 @@ public class MaximumSliding {
         // sliding
         int n = arr.length;
         int[] slidingWindows = new int[n - k + 1];
-        Queue<Integer> queue = new PriorityQueue<>();
-        return slidingWindows;
+        ArrayDeque<Integer> queue = new ArrayDeque<>(3);
+        for (int i = 0; i < k; i++) {
+            queue.add(arr[i]);
+        }
+        for (int i = k; i < arr.length; i++) {
+            // System.out.println(queue);
+            
+            queue.add(arr[i]);
+            System.out.println(queue.peekLast());
+        }
 
+        return slidingWindows;
     }
 
     public static void main(String[] args) {
         int[] arr = Util.takeUserInput();
-        int[] slidingWindows = findMaxSlidingWindow(arr, 3);
+        int[] slidingWindows = findMaxSlidingWindowOptimized(arr, 3);
         System.out.println(Arrays.toString(slidingWindows));
     }
 }
