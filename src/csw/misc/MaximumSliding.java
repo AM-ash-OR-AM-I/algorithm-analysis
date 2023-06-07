@@ -37,9 +37,8 @@ public class MaximumSliding {
             queue.add(arr[i]);
         }
         for (int i = k; i < arr.length; i++) {
-            // System.out.println(queue);
-            
             queue.add(arr[i]);
+            // System.out.println(queue);
             System.out.println(queue.peekLast());
         }
 
