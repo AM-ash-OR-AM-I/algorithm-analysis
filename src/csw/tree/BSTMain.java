@@ -71,7 +71,7 @@ class BinarySearchTree extends BinaryTree {
         System.out.println(deleteNode.data + " " + succesorNode.data);
         // TODO: Delete The node somehow
         // succesorNode.left = deleteNode.left;
-        // succesorNode.right = deleteNode.right;
+        // succesorNode.right = deleteNode.
         return succesorNode;
     }
 
