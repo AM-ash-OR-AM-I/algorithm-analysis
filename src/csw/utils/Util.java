@@ -1,10 +1,15 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Util {
     static Scanner sc = new Scanner(System.in);
+
+    static public int nextLineInteger() {
+        return Integer.parseInt(sc.nextLine());
+    }
 
     static public int[] takeUserInput() {
         System.out.println("Enter the array elements seprated by spaces: ");
@@ -13,6 +18,17 @@ public class Util {
         int[] arr = new int[strArr.length];
         for (int i = 0; i < strArr.length; i++) {
             arr[i] = Integer.parseInt(strArr[i]);
+        }
+        return arr;
+    }
+
+    static public ArrayList<Integer> takeUserInputArrayList() {
+        System.out.println("Enter the array elements seprated by spaces: ");
+        String inputs = sc.nextLine();
+        String[] strArr = inputs.split(" ");
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < strArr.length; i++) {
+            arr.add(Integer.parseInt(strArr[i]));
         }
         return arr;
     }

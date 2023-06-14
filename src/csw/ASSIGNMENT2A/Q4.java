@@ -35,3 +35,8 @@ public class Q4 {
         System.out.println("Result = " + result);
     }
 }
+
+/*
+ * o/p
+ * Result = 54  
+ */
