@@ -10,33 +10,43 @@ public class StockSpanProblem {
         /*
          * O(N^2)
          */
-        int[] SR = new int[arr.length];
+        int[] stockRangeArr = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
             int currentStock = arr[i];
-            SR[i] = 1;
+            stockRangeArr[i] = 1;
             for (int j = 0; j < i; j++) {
                 if (currentStock > arr[j]) {
-                    SR[i] = (i - j) + 1;
+                    stockRangeArr[i] = (i - j) + 1;
                     break;
                 }
             }
         }
-        return SR;
+        return stockRangeArr;
     }
 
     static int[] stockSpanRangeOptimized(int[] arr) {
         Stack<Integer> stack = new Stack<>();
-        int[] SR = new int[arr.length];
+        int[] stockRangeArr = new int[arr.length];
         stack.push(0);
-        SR[0] = 1;
-        for (int i = 1; i < SR.length; i++) {
-            while (!stack.isEmpty() && arr[i] >= arr[stack.peek()]) {
+        stockRangeArr[0] = 1;
+        int operations = 0;
+        for (int i = 1; i < stockRangeArr.length; i++) { // Iterates over each stock
+            while (!stack.isEmpty() && arr[i] > arr[stack.peek()]) {
+                // Keep popping elements untill you reach the element that is bigger or equal to
+                // current
                 stack.pop();
+                operations++;
+                System.out.println("Stack after pop" + stack);
             }
-            SR[i] = (stack.isEmpty()) ? (i + 1) : (i - stack.peek());
+            // Difference between current element and the nearest elemnent bigger.
+            stockRangeArr[i] = (stack.isEmpty()) ? (i + 1) : (i - stack.peek());
+            // Push the element that is added
             stack.push(i);
+            operations++;
+            System.out.println("stack after push" + stack);
         }
-        return SR;
+        System.out.println("Total no. of ops = " + operations);
+        return stockRangeArr;
     }
 
     public static void main(String[] args) {
