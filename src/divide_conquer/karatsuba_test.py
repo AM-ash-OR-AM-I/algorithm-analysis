@@ -7,6 +7,7 @@ from karatsuba_fast_multiply_efficient import karatsuba_fast_multiply_faster
 Practical comparison of karatsuba_fast_multiply and default multiplication
 """
 
+
 def default_multiply(a: int, b: int) -> None:
     result = a * b
     # print(result)
@@ -30,12 +31,12 @@ times = timeit.Timer(partial(karatsuba_fast_multiply_faster, a, b)).repeat(
     repeats, iterations
 )
 time_taken = min(times) / iterations
-print(f"Time taken by karatsuba_fast_multiply_faster: {time_taken:.6f} seconds")
+print(f"Time taken by karatsuba_fast_multiply: {time_taken:.6f} seconds")
 
 
 """
 Time taken by default multiply: 0.000112 seconds
-Time taken by karatsuba_fast_multiply_faster: 0.637827 seconds
+Time taken by karatsuba_fast_multiply: 0.637827 seconds
 
 It can be seen that the default multiplication is faster than karatsuba multiplication.
 Even though theoretically karatsuba multiplication is faster, built-in multiplication
