@@ -31,3 +31,4 @@
 - In practical scenarios, where performance is a key consideration, it is generally more efficient to rely on built-in multiplication operations or optimized libraries for multiplying large numbers. The built-in operations are highly optimized, take advantage of hardware optimizations, and are implemented in lower-level languages like C, which can provide significant performance benefits.
 
 - The Karatsuba algorithm, while theoretically more efficient for very large numbers, may not always provide practical performance improvements in real-world scenarios, especially when compared to highly optimized built-in operations.
+- Therefore, based on these results and the fact that the built-in multiplication operation is significantly faster, we can conclude that for general-purpose multiplication of large numbers, relying on the built-in multiplication in Python is more practical and efficient than implementing the Karatsuba algorithm.
