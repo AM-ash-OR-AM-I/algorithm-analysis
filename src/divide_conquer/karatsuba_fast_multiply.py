@@ -1,3 +1,6 @@
+import random
+
+
 def add(a: str, b: str) -> str:
     """
     N-bit parallel adder using sum and carry
@@ -19,10 +22,8 @@ def add(a: str, b: str) -> str:
 def multiply(a: str, b: str) -> int:
     """
     ### Uses divide and conquer approach
-    ```0
-    T(n) = 3T(n/2) + O(n)
-    T(n) = O(n^(log2(3))) = O(n^1.584)
-    ```
+    - Converts the numbers to binary strings and then multiplies them
+    - `T(n) = 3T(n/2) + O(n) => T(n) = O(n^(log2(3))) = O(n^1.584)`
     """
     n = max(len(a), len(b))
     a, b = a.zfill(n), b.zfill(n)
@@ -40,13 +41,15 @@ def multiply(a: str, b: str) -> int:
     return (a1b1 << (2 * second_half)) + ((p - a0b0 - a1b1) << second_half) + a0b0
 
 
-def karatsuba_fast_multiply(a: int, b: int) -> int:
+def karatsuba_fast_multiply(a: int, b: int) -> None:
     bin_a = bin(a)[2:]
     bin_b = bin(b)[2:]
-    return multiply(bin_a, bin_b)
+    # Convert the integers to binary strings and then multiply them
+    result = multiply(bin_a, bin_b)
+    return result
 
 
-# print(add("111111", "1111111111111111111111111111111111"))
-a = 94308590347589345342594320785943275324543523
-b = 45432589275890471289075823945894378974892378
-print(karatsuba_fast_multiply(a, b))
+if __name__ == "__main__":
+    a = random.randint(10**1000, 10**1001)
+    b = random.randint(10**1000, 10**1001)
+    karatsuba_fast_multiply(a, b)
