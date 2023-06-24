@@ -33,4 +33,4 @@ def karatsuba_fast_multiply_faster(a: int, b: int) -> None:
 if __name__ == "__main__":
     a = random.randint(10**1000, 10**1001)
     b = random.randint(10**1000, 10**1001)
-    karatsuba_fast_multiply_faster(a, b)
+    print(karatsuba_fast_multiply_faster(a, b))
