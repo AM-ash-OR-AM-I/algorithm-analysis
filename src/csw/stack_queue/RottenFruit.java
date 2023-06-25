@@ -4,7 +4,7 @@
  * contact. You need to find the maximum number of days in which the fruits of
  * whole grid will rot.
  */
-package stack;
+package stack_queue;
 
 public class RottenFruit {
     static void DFSRottenFruit(int[][] mat, int[][] traversedTime, int rows, int cols, int currRow, int currCol,

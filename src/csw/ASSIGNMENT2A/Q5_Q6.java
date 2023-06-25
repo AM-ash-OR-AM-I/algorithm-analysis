@@ -28,17 +28,17 @@ class Graph {
   }
 
   // BFS Traversal
-  void BFS(int root) {
+  void BFS(int rootNode) {
     boolean visited[] = new boolean[vertices];
     int node = 0;
-    visited[root] = true;
-    queue.add(root);
+    visited[rootNode] = true;
+    queue.add(rootNode);
 
     while (queue.size() != 0) {
-      root = queue.poll();
-      System.out.print(root + " ");
-      for (int i = 0; i < adjList[root].size(); i++) {
-        node = adjList[root].get(i);
+      rootNode = queue.poll();
+      System.out.print(rootNode + " ");
+      for (int i = 0; i < adjList[rootNode].size(); i++) {
+        node = adjList[rootNode].get(i);
         if (!visited[node]) {
           visited[node] = true;
           queue.add(node);
@@ -48,17 +48,17 @@ class Graph {
   }
 
   // DFS Traversal
-  void DFS(int root) {
+  void DFS(int rootNode) {
     boolean visited[] = new boolean[vertices];
     int node = 0;
-    visited[root] = true;
-    stack.add(root);
+    visited[rootNode] = true;
+    stack.add(rootNode);
 
     while (stack.size() != 0) {
-      root = stack.pop();
-      System.out.print(root + " ");
-      for (int i = 0; i < adjList[root].size(); i++) {
-        node = adjList[root].get(i);
+      rootNode = stack.pop();
+      System.out.print(rootNode + " ");
+      for (int i = 0; i < adjList[rootNode].size(); i++) {
+        node = adjList[rootNode].get(i);
         if (!visited[node]) {
           visited[node] = true;
           stack.add(node);
@@ -71,17 +71,23 @@ class Graph {
 // Traverse using BFS
 public class Q5_Q6 {
   public static void main(String[] args) {
-    Graph graph = new Graph(6);
+    Graph graph = new Graph(11);
 
     graph.addEdge(0, 1);
+    graph.addEdge(0, 7);
+    graph.addEdge(0, 10);
     graph.addEdge(1, 2);
+    graph.addEdge(1, 4);
     graph.addEdge(2, 3);
-    graph.addEdge(1, 3);
+    graph.addEdge(2, 5);
+    graph.addEdge(5, 6);
+    graph.addEdge(7, 8);
+    graph.addEdge(7, 9);
 
     System.out.println("BFS Traversal of the graph:");
-    graph.BFS(2);
+    graph.BFS(0);
     System.out.println("\nDFS Traversal of the graph:");
-    graph.DFS(2);
+    graph.DFS(0);
   }
 }
 
