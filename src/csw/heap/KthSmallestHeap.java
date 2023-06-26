@@ -8,6 +8,7 @@ public class KthSmallestHeap {
     static int findKthSmallest(int[] arr, int k) {
         int n = arr.length;
         PriorityQueue<Integer> pq = new PriorityQueue<>();
+        // Add operation is log(n)
         for (int x : arr) {
             pq.add(x);
         }

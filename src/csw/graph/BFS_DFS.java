@@ -1,30 +1,9 @@
 package graph;
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Stack;
+class BFS_DFS extends Graph {
 
-class Graph {
-  private int vertices;
-  private LinkedList<Integer> adjList[];
-  private ArrayDeque<Integer> queue;
-  private Stack<Integer> stack;
-
-  Graph(int v) {
-    vertices = v;
-    // Intialize adjacency List
-    adjList = new LinkedList[v];
-    for (int i = 0; i < v; i++) {
-      adjList[i] = new LinkedList<>();
-    }
-    queue = new ArrayDeque<Integer>();
-    stack = new Stack<Integer>();
-  }
-
-  void addEdge(int v, int w) {
-    // Bidirectional edge
-    adjList[v].add(w);
-    adjList[w].add(v);
+  BFS_DFS(int vertices) {
+    super(vertices);
   }
 
   // BFS Traversal
@@ -36,7 +15,8 @@ class Graph {
     while (!queue.isEmpty()) {
       rootNode = queue.poll();
       System.out.print(rootNode + " ");
-      for (int node : adjList[rootNode]) {
+      for (Edge edge : adjList[rootNode]) {
+        int node = edge.dest;
         if (visited[node]) {
           continue;
         }
@@ -55,7 +35,8 @@ class Graph {
     while (stack.size() != 0) {
       rootNode = stack.pop();
       System.out.print(rootNode + " ");
-      for (int node : adjList[rootNode]) {
+      for (Edge edge : adjList[rootNode]) {
+        int node = edge.dest;
         if (visited[node]) {
           continue;
         }
@@ -64,25 +45,25 @@ class Graph {
       }
     }
   }
+}
 
-  public class BFS_DFS {
-    public static void main(String[] args) {
-      Graph graph = new Graph(11);
-      graph.addEdge(0, 1);
-      graph.addEdge(0, 7);
-      graph.addEdge(0, 10);
-      graph.addEdge(1, 2);
-      graph.addEdge(1, 4);
-      graph.addEdge(2, 3);
-      graph.addEdge(2, 5);
-      graph.addEdge(5, 6);
-      graph.addEdge(7, 8);
-      graph.addEdge(7, 9);
+class Main {
+  public static void main(String[] args) {
+    BFS_DFS graph = new BFS_DFS(11);
+    graph.addEdge(0, 1);
+    graph.addEdge(0, 7);
+    graph.addEdge(0, 10);
+    graph.addEdge(1, 2);
+    graph.addEdge(1, 4);
+    graph.addEdge(2, 3);
+    graph.addEdge(2, 5);
+    graph.addEdge(5, 6);
+    graph.addEdge(7, 8);
+    graph.addEdge(7, 9);
 
-      System.out.println("BFS Traversal of the graph:");
-      graph.BFS(0);
-      System.out.println("\nDFS Traversal of the graph:");
-      graph.DFS(0);
-    }
+    System.out.println("BFS Traversal of the graph:");
+    graph.BFS(0);
+    System.out.println("\nDFS Traversal of the graph:");
+    graph.DFS(0);
   }
 }

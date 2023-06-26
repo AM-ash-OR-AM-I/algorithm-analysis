@@ -2,8 +2,6 @@ package misc;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 import utils.Util;
 
@@ -27,19 +25,33 @@ public class MaximumSliding {
         return slidingWindows;
     }
 
+    /**
+     * Maximum value in a sliding window, check out, csw\misc\sliding_window.jpg
+     */
     static int[] findMaxSlidingWindowOptimized(int[] arr, int k) {
-        // TODO: Implement optimized using queue by removing elements from queue when
-        // sliding
         int n = arr.length;
         int[] slidingWindows = new int[n - k + 1];
         ArrayDeque<Integer> queue = new ArrayDeque<>(3);
-        for (int i = 0; i < k; i++) {
-            queue.add(arr[i]);
-        }
-        for (int i = k; i < arr.length; i++) {
-            queue.add(arr[i]);
-            // System.out.println(queue);
-            System.out.println(queue.peekLast());
+
+        for (int i = 0; i < arr.length; i++) {
+            // If element to be inserted is greater than than previously inserted elements.
+            while (!queue.isEmpty() && arr[i] <= arr[queue.peekLast()]) {
+                queue.removeLast();
+            }
+
+            // If element to be inserted is out of range.
+            if (!queue.isEmpty() && queue.peekFirst() <= (i - k)) {
+                queue.removeFirst();
+            }
+
+            // Push the new element to end of the queue.
+            queue.add(i);
+
+            // Start printing only after k elements are scanned.
+            if (i >= (k - 1)) {
+                slidingWindows[i - k + 1] = arr[queue.peekFirst()];
+            }
+
         }
 
         return slidingWindows;
