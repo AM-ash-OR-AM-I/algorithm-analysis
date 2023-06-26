@@ -1,5 +1,9 @@
-package misc;
+package recursion;
 
+/*
+ * N people seating in a round table. From kth person will be executed
+ * Excution continues until last person.
+ */
 public class Joseph {
     static int personToSurvive(int n, int k) {
         if (n == 1) {

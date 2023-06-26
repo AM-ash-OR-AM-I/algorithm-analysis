@@ -4,20 +4,20 @@ import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Stack;
 
+class Edge {
+  public int dest, cost;
+
+  Edge(int dest, int cost) {
+    this.dest = dest;
+    this.cost = cost;
+  }
+}
+
 public class Graph {
   protected int vertices;
   protected LinkedList<Edge>[] adjList;
   protected ArrayDeque<Integer> queue;
   protected Stack<Integer> stack;
-
-  class Edge {
-    public int dest, cost;
-
-    Edge(int dest, int cost) {
-      this.dest = dest;
-      this.cost = cost;
-    }
-  }
 
   Graph(int v) {
     vertices = v;
