@@ -30,16 +30,21 @@ public class StockSpanProblem {
         stack.push(0);
         stockRangeArr[0] = 1;
         int operations = 0;
-        for (int i = 1; i < stockRangeArr.length; i++) { // Iterates over each stock
+        for (int i = 1; i < stockRangeArr.length; i++) {
             while (!stack.isEmpty() && arr[i] > arr[stack.peek()]) {
-                // Keep popping elements untill you reach the element that is bigger or equal to
-                // current
+                // Keep popping elements untill you reach the element that is bigger than
+                // current value.
                 stack.pop();
                 operations++;
                 System.out.println("Stack after pop" + stack);
             }
-            // Difference between current element and the nearest elemnent bigger.
+
+            // Difference between current element and the nearest element bigger than
+            // current. If no element is there in stack => the current element is maximum
+            // so, i+1 indicates
+            // the maximum element till ith iteration.
             stockRangeArr[i] = (stack.isEmpty()) ? (i + 1) : (i - stack.peek());
+
             // Push the element that is added
             stack.push(i);
             operations++;
