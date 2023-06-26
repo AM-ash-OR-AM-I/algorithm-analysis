@@ -1,52 +1,57 @@
 package graph;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class Djikstra {
-  public static void minDistance(Graph gph) {
-    int[] previous = new int[gph.vertices];
-    int[] dist = new int[gph.vertices];
-    boolean[] visited = new boolean[gph.vertices];
-    int source = 1;
-    for (int i = 0; i < gph.vertices; i++) {
-      previous[i] = -1;
-      dist[i] = 999999; // infinite
+  public static void minDistance(Graph graph, int source) {
+    int[] parent = new int[graph.vertices];
+    int[] distance = new int[graph.vertices];
+    boolean[] visited = new boolean[graph.vertices];
+    for (int i = 0; i < graph.vertices; i++) {
+      parent[i] = -1;
+      distance[i] = 999999; // infinite
     }
-    dist[source] = 0;
-    previous[source] = -1;
+    distance[source] = 0;
+    parent[source] = -1;
     EdgeComparator comp = new EdgeComparator();
+
+    // Priority queue is used to Extract min
     PriorityQueue<Edge> queue = new PriorityQueue<Edge>(100, comp);
-    Edge node = new Edge(source, 0);
-    queue.add(node);
-    while (queue.isEmpty() != true) {
-      node = queue.peek();
-      queue.remove();
+    Edge edge = new Edge(source, 0);
+    queue.add(edge);
+    while (!queue.isEmpty()) {
+      edge = queue.poll();
       visited[source] = true;
-      source = node.dest;
-      LinkedList<Edge> adl = gph.adjList[source];
-      for (Edge adn : adl) {
-        int dest = adn.dest;
-        int alt = adn.cost;
-        if (dist[dest] > alt && visited[dest] == false) {
-          dist[dest] = alt;
-          previous[dest] = source;
-          node = new Edge(dest, alt);
-          queue.add(node);
+      source = edge.dest;
+      // Using BFS
+      for (Edge adjNode : graph.adjList[source]) {
+        int dest = adjNode.dest;
+        int altPath = adjNode.cost + distance[source];
+
+        // If found a shorter path
+        if (distance[dest] > altPath && !visited[dest]) {
+          distance[dest] = altPath;
+          parent[dest] = source;
+          edge = new Edge(dest, altPath);
+          queue.add(edge);
         }
       }
     }
-    // printing result.
-    int count = gph.vertices;
-    for (int i = 0; i < count; i++) {
-      if (dist[i] == Integer.MAX_VALUE) {
-        System.out.println(" node id " + i + " prev " + previous[i] + " distance Unreachable");
-      } else {
-        System.out.println(" node id " + i + " prev " + previous[i] + " distance : " +
-            dist[i]);
-      }
-    }
+    // int vertices = graph.vertices;
+    System.out.println(Arrays.toString(distance));
+    System.out.println(Arrays.toString(parent));
+    // for (int i = 0; i < vertices; i++) {
+    // if (distance[i] == Integer.MAX_VALUE) {
+    // System.out.println("node id " + i + " prev " + parent[i] + " distance :
+    // Unreachable");
+    // } else {
+    // System.out.println("node id " + i + " prev " + parent[i] + " distance : " +
+    // distance[i]);
+    // }
+    // }
   }
 
   public static void main(String[] args) {
@@ -61,7 +66,7 @@ public class Djikstra {
     graph.addEdge(5, 6);
     graph.addEdge(7, 8);
     graph.addEdge(7, 9);
-    minDistance(graph);
+    minDistance(graph, 1);
 
   }
 }
