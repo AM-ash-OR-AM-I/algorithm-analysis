@@ -1,4 +1,4 @@
-import random
+from random import randint
 from typing import List
 
 
@@ -6,19 +6,9 @@ def quick_sort(arr: List[int], begin, end):
     def swap(i, j):
         arr[i], arr[j] = arr[j], arr[i]
 
-    """
-    [0, 1, 3, 4, {2}]
-           |______|
-             swap
-    [0, 1 | 2 | 4, 3]
-     lo  hi    lo  hi
-     
-    [0, 1 | 2 | 3, 4]
-                |__|
-                swap
-    """
-
     def partition() -> int:
+        index = randint(begin, end)
+        swap(index, end)
         pivot = arr[end]
         i = begin - 1
         for j in range(begin, end):
@@ -35,7 +25,15 @@ def quick_sort(arr: List[int], begin, end):
         quick_sort(arr, index + 1, end)
 
 
-if __name__ == "__main__":
-    a = [43, 32, 4, 453, 423, 6547, 234, 76]
-    quick_sort(a, 0, len(a) - 1)
-    print(a)
+def optimized_sort(s: List[int]) -> int:
+    pivot = s[randint(0, len(s) - 1)]
+    s1 = []
+    s2 = []
+    for x in s:
+        if x < pivot:
+            s1.append(x)
+        elif x > pivot:
+            s2.append(x)
+    optimized_sort(s2)
+    optimized_sort(s1)
+    
