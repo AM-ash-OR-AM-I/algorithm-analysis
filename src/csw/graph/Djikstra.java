@@ -2,7 +2,6 @@ package graph;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class Djikstra {
@@ -27,15 +26,15 @@ public class Djikstra {
       visited[source] = true;
       source = edge.dest;
       // Using BFS
-      for (Edge adjNode : graph.adjList[source]) {
-        int dest = adjNode.dest;
-        int altPath = adjNode.cost + distance[source];
+      for (Edge newEdge : graph.adjList[source]) {
+        int dest = newEdge.dest;
+        int altDist = newEdge.cost + distance[source];
 
         // If found a shorter path
-        if (distance[dest] > altPath && !visited[dest]) {
-          distance[dest] = altPath;
+        if (altDist < distance[dest] && !visited[dest]) {
+          distance[dest] = altDist;
           parent[dest] = source;
-          edge = new Edge(dest, altPath);
+          edge = new Edge(dest, altDist);
           queue.add(edge);
         }
       }

@@ -63,8 +63,8 @@ class BinaryTree {
         if (root == null) {
             return;
         } else {
-            inOrder(root.left);
-            inOrder(root.right);
+            postOrder(root.left);
+            postOrder(root.right);
             System.out.print(root.data + " ");
         }
     }
