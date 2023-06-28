@@ -1,3 +1,6 @@
+# Algorithms and Data Structures
+This repository contains my notes and implementations of algorithms and data structures in CSW-II and AD-I/II.
+
 ## Some interesting stuff for AD-II
 ### SAT
 - SAT game: http://www.cril.univ-artois.fr/~roussel/satgame/satgame.php?level=2&lang=eng
@@ -18,9 +21,16 @@
     - If (P = NP) => NP = NP-Complete, Modern cryptography would be broken because it uses SAT and other NP-hard problems.
 
 
-### Randomised Quick Sort
+### Randomised Algorithms
+#### Quick Sort
 - The worst case of quick sort is when the pivot is the smallest or the largest element in the array. This can be avoided by choosing a random pivot.
 - Here are codes:
   - [Quicksort Randomised](./src/sorting/quick_sort_randomised.py)
   - [Randomised select](./src/sorting/select_randomised.py)
   - [Comparison between quicksort and randomised quicksort](./src/sorting/compare_quick_sort_randomised.py)
+
+### Approximation Algorithms
+#### 0/1 Knapsack
+- Approximation algorithms are used to find a solution to a problem that is close to the optimal solution.
+  - [0/1 Knapsack optimal](./src/dp/Knapsack01.java)
+  - [0/1 Knapsack approximation](./src/dp/Knapsack01.java)
