@@ -5,7 +5,7 @@ Randomised quick sort eliminates the worst case scenario of quick sort, which is
 """
 import numpy as np
 from quick_sort import quick_sort
-from quick_sort_randomised import quick_sort as quick_sort_randomised
+from quick_sort_randomised import quick_sort_randomised
 
 if __name__ == "__main__":
     from timeit import timeit
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     test_cases = [
         [i for i in range(900, 0, -1)],  # Worst case scenario for quick sort.
         [i for i in range(900)],  # Worst case scenario for quick sort.
-        np.random.permutation(900), # Average case scenario for quick sort.
+        np.random.permutation(900),  # Average case scenario for quick sort.
     ]
     # When array is sorted in reverse order, randomised quick sort is orders of magnitude faster than quick sort.
     for a in test_cases:

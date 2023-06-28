@@ -2,7 +2,7 @@ from random import randint
 from typing import List
 
 
-def quick_sort(arr: List[int], begin, end):
+def quick_sort_randomised(arr: List[int], begin, end):
     def swap(i, j):
         arr[i], arr[j] = arr[j], arr[i]
 
@@ -21,8 +21,8 @@ def quick_sort(arr: List[int], begin, end):
 
     if begin < end:
         index = partition()
-        quick_sort(arr, begin, index - 1)
-        quick_sort(arr, index + 1, end)
+        quick_sort_randomised(arr, begin, index - 1)
+        quick_sort_randomised(arr, index + 1, end)
 
 
 def optimized_sort(s: List[int]) -> int:
