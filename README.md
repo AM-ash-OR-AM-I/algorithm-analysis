@@ -1,7 +1,15 @@
 # Algorithms and Data Structures
 This repository contains my notes and implementations of algorithms and data structures in CSW-II and AD-I/II.
 
-## Some interesting stuff for AD-II
+## AD-I codes:
+  - [Sorting](./src/sorting/)
+  - [Graphs](./src/csw/graph/)
+  - [Greedy Algorithms](./src/greedy/)
+  - [Divide and Conquer](./src/divide_and_conquer/)
+  - [Dynamic Programming](./src/dp/)
+
+## AD-II
+Implementation & Some interesting stuff I found while studying for AD-II.
 ### SAT
 - SAT game: http://www.cril.univ-artois.fr/~roussel/satgame/satgame.php?level=2&lang=eng
 - SAT solver: https://developers.google.com/optimization/cp/cp_solver
