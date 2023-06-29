@@ -25,7 +25,7 @@ Implementation & Some interesting stuff I found while studying for AD-II.
 #### Gradient Descent
   - Choosing a local minimum.
 #### Metropolis Algorithm - Simulated Annealing
-  - Boltzmann distribution in desmos: https://www.desmos.com/calculator/tnrxmdumst
+  - Boltzmann distribution in desmos: https://www.desmos.com/calculator/pwjyj4yoyg
 #### Hopfield Neural Networks
   - It's used as Associative Memory in machine learning
   - https://youtu.be/piF6D6CQxUw
