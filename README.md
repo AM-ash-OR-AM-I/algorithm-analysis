@@ -19,24 +19,8 @@ This repository contains my notes and implementations of algorithms and data str
   - [Comparison between quicksort and randomised quicksort](./src/sorting/compare_quick_sort_randomised.py)
 
 ### Local Search
-#### Gradient Descent
-  - Choosing a local minimum.
 #### Metropolis Algorithm - Simulated Annealing
   - Boltzmann distribution in desmos: https://www.desmos.com/calculator/pwjyj4yoyg
-#### Hopfield Neural Networks
-  - It's used as Associative Memory in machine learning
-  - https://youtu.be/piF6D6CQxUw
-    
-#### Hashing (Hash Table)
-- https://youtu.be/S5NY1fqisSY
-- Chaining
-  <!-- - [Chaining](./src/hashing/Chaining.java)
-  - [Chaining with linked list](./src/hashing/ChainingLinkedList.java) -->
-- Open Addressing
-  - Linear Probing
-  - Quadratic Probing
-  - Double Hashing
-- Universal Hashing
 
 ### Approximation Algorithms
 #### 0/1 Knapsack
