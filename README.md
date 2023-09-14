@@ -1,7 +1,7 @@
 # Algorithms and Data Structures
 This repository contains my notes and implementations of algorithms and data structures in CSW-II and AD-I/II.
 
-## AD-I codes:
+## AD-I:
   - [Practical comparision for Karatsuba's fast multiplication](./src/divide_conquer/README.md)
   - [Sorting](./src/sorting/)
   - [Graphs](./src/csw/graph/)
@@ -10,8 +10,6 @@ This repository contains my notes and implementations of algorithms and data str
   - [Dynamic Programming](./src/dp/)
 
 ## AD-II
-Implementation & Some interesting stuff I found while studying for AD-II.
-
 ### Randomised Algorithms
 #### Quick Sort
 - The worst case of quick sort is when the pivot is the smallest or the largest element in the array. This can be avoided by choosing a random pivot.
