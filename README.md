@@ -1,4 +1,4 @@
-# Algorithms and Data Structures
+# Algorithm analysis
 This repository contains my notes and implementations of algorithms and data structures in CSW-II and AD-I/II.
 
 ## AD-I:
